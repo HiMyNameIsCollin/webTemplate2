@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
+}
+
+.banner {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.spotlight {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.content {
+  padding: 2.5rem 2.5rem 0.5rem 2.5rem;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  background: white;
+  order: 1;
+}
+.content--altWidth {
+  width: 70%;
+}
+.content--altOrder {
+  order: 2;
+}
+.content--altScheme {
+  background: black;
+  color: white;
+}
+.content--alignStart {
+  text-align: start;
+}
+.content--alignEnd {
+  text-align: end;
+}
+.content__blurb {
+  margin-bottom: 3rem;
+}
+.content__button {
+  border-radius: 10px;
+  font-size: 1.5rem;
+  margin: auto;
+  padding: 1rem 2rem;
+}
+.content--foreground {
+  background: none;
+  padding: 2.5rem;
+  margin: auto;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+.content--foreground::before {
+  content: "";
+  background: white;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.5;
+}
+.content--foreground--altScheme {
+  color: white;
+}
+.content--foreground--altScheme::before {
+  background: black;
+}
+.content--foreground--top {
+  margin-top: 0;
+}
+.content--foreground--left {
+  margin-left: 0;
+  width: 50%;
+}
+.content--foreground--right {
+  margin-right: 0;
+  width: 50%;
+}
+.content--foreground--bottom {
+  margin-bottom: 0;
+}
+.content--foreground--alt {
+  border-radius: 10px;
+  max-width: 50%;
+}
+.content--foreground--alt::before {
+  opacity: 1;
+}
+.content--foreground--alt--left {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: 0;
+}
+.content--foreground--alt--right {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-right: 0;
+}
+.content--foreground--alt--top {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: 0;
+  max-width: 75%;
+}
+.content--foreground--alt--bottom {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0;
+  max-width: 75%;
+}
+.content__header {
+  margin-bottom: 1.5rem;
+}
+.content__header h1, .content__header h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 400;
+}
+.content__header p {
+  font-size: 1.25rem;
+}
+
+.image {
+  background: black;
+  height: auto;
+  position: relative;
+  width: 50%;
+  order: 2;
+}
+.image img {
+  height: 100%;
+  left: 0;
+  max-width: 100%;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+.image--circle img {
+  border-radius: 50%;
+  left: calc((100% - 25rem) / 2);
+  top: calc((100% - 25rem) / 2);
+  height: 25rem;
+  width: 25rem;
+}
+.image--altOrder {
+  order: 1;
+}
+.image--altWidth {
+  width: 30%;
+}
+.image--background {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+.image--background--circle img {
+  border-radius: 50%;
+  left: calc((100% - 25rem) / 2);
+  top: calc((100% - 25rem) / 2);
+  height: 25rem;
+  width: 25rem;
+}
+.image--background--circle--left {
+  left: 0;
+}
+.image--background--circle--right {
+  right: 0;
+}
+.image--background--circle--top img {
+  top: calc((75% - 25rem) / 2);
+}
+.image--background--circle--bottom img {
+  top: calc((125% - 25rem) / 2);
+}
+
+@media screen and (orientation: portrait) {
+  .banner {
+    flex-direction: column;
+  }
+
+  .image {
+    height: 50vh;
+    order: 1;
+    width: 100%;
+  }
+  .image--background {
+    height: 100%;
+  }
+  .content {
+    order: 2;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 920px) {
+  .content {
+    padding: 6rem 6rem 2rem 6rem;
+    text-align: start;
+  }
+  .content--foreground {
+    padding: 6rem;
+  }
+  .content__header h1 {
+    font-size: 4rem;
+  }
+
+  .image--background--circle--left img {
+    left: calc((50% - 25rem) / 2);
+  }
+  .image--background--circle--right img {
+    left: calc((150% - 25rem) / 2);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
