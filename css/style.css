@@ -31,6 +31,7 @@
   flex-direction: column;
   width: 50%;
   background: white;
+  transition: all 0.5s linear;
   order: 1;
 }
 .content--altWidth {
@@ -144,6 +145,7 @@
   height: auto;
   position: relative;
   width: 50%;
+  transition: all 0.5s linear;
   order: 2;
 }
 .image img {
