@@ -3,16 +3,34 @@ const bannerContent = document.getElementById('bannerContent')
 const bannerImage = document.getElementById('bannerImage')
 const bannerButton = document.getElementById('bannerButton')
 const bannerStyleSwitch = document.getElementById('bannerStyleSwitch')
-const alignmentStyleSwitch = document.getElementById('bannerAlignmentSwitch')
+const bannerAlignmentSwitch = document.getElementById('bannerAlignmentSwitch')
+const bannerColorSwitch = document.getElementById('bannerColorSwitch')
+
 const bannerStyles = [
+	{
+		content: [],
+		image: ['image--circle']
+	},
 	{
 		content: ['content--foreground'],
 		image: ['image--background']
 	},
 	{
+		content: ['content--foreground'],
+		image: ['image--background', 'image--background--cover']
+	},
+	{
+		content: ['content--foreground', 'content--foreground--alt', 'content--foreground--alt--bottom'],
+		image: ['image--background']
+	},
+	{
 		content: ['content--foreground', 'content--foreground--alt'],
 		image: ['image--background']
-	}
+	},
+	{
+		content: ['content--foreground', 'content--foreground--alt', 'content--foreground--alt--right'],
+		image: ['image--background']
+	},
 ]
 
 const alignmentStyles = [
@@ -26,27 +44,64 @@ const alignmentStyles = [
 	},
 ]
 
+const colorStyles = [
+	{
+		content: ['content--black'],
+		image: ['image--black']
+	},
+	{
+		content: ['content--purple'],
+		image: ['image--purple']
+	},
+	{
+		content: ['content--pink'],
+		image: ['image--pink']
+	},
+	{
+		content: ['content--yellow'],
+		image: ['image--yellow']
+	},
+	{
+		content: ['content--blue'],
+		image: ['image--blue']
+	},
+	{
+		content: ['content--teal'],
+		image: ['image--teal']
+	},
+]
+
 
 
 let bannerStyleCounter = 0
 let bannerAlignmentCounter = 0
+let bannerColorCounter = 0
 const handleStyle = (styles, element1, element2, counter) => {
 	const removeClass = (element1, element2, style1, style2) => {
-		style1.forEach((c, i) => {
-			element1.classList.remove(c)
-		})
-		style2.forEach((c, i) => {
-			element2.classList.remove(c)
-		})
+		if(style1){
+			style1.forEach((c, i) => {
+				element1.classList.remove(c)
+			})		
+		}
+		if(style2){
+			style2.forEach((c, i) => {
+				element2.classList.remove(c)
+			})		
+		}
 
 	}
 	const addClass = (element1, element2, style1, style2) => {
-		style1.forEach((c, i) => {
-			element1.classList.add(c)
-		})
-		style2.forEach((c, i) => {
-			element2.classList.add(c)
-		})
+		if(style1){
+			style1.forEach((c, i) => {
+				element1.classList.add(c)
+			})		
+		}
+		if(style2){
+			style2.forEach((c, i) => {
+				element2.classList.add(c)
+			})		
+		}
+
 	}
 	if(counter < styles.length){
 		if(counter !== 0){
@@ -77,18 +132,34 @@ bannerStyleSwitch.addEventListener('click', (e) => {
 	e.stopPropagation()
 	handleStyle(bannerStyles, bannerContent, bannerImage, bannerStyleCounter)
 	if(bannerStyleCounter < bannerStyles.length ){
+		const handleBannerClick = (e) => {
+			e.stopPropagation()
+			handleStyle(bannerStyles, bannerContent, bannerImage, bannerStyleCounter)
+			bannerImage.removeEventListener('click', handleBannerClick)
+		}
+		if(bannerStyleCounter === 2){
+			bannerImage.addEventListener('click', handleBannerClick)
+		}
 		bannerStyleCounter++
 	}else {
-		bannerStyleCounter = 0
+		bannerStyleCounter = 0 
 	}
 })
-alignmentStyleSwitch.addEventListener('click', (e) => {
+bannerAlignmentSwitch.addEventListener('click', (e) => {
 	e.stopPropagation()
-	console.log(bannerAlignmentCounter)
 	handleStyle(alignmentStyles, bannerContent, bannerButton, bannerAlignmentCounter)
-	if(bannerAlignmentCounter < bannerStyles.length ){
+	if(bannerAlignmentCounter < alignmentStyles.length ){
 		bannerAlignmentCounter++
 	}else {
 		bannerAlignmentCounter = 0
+	}
+})
+bannerColorSwitch.addEventListener('click', (e) => {
+	e.stopPropagation()
+	handleStyle(colorStyles, bannerContent, bannerImage, bannerColorCounter)
+	if(bannerColorCounter < colorStyles.length ){
+		bannerColorCounter++
+	}else {
+		bannerColorCounter = 0
 	}
 })

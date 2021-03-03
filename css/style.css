@@ -24,31 +24,33 @@
 }
 
 .content {
-  background: white;
-  padding: 6rem 6rem 0.5rem 6rem;
-  height: 100%;
-  text-align: start;
   display: flex;
   flex-direction: column;
-  width: 50%;
-  transition: all 0.5s linear;
+  height: auto;
   order: 1;
-}
-.content--alignStart {
+  padding: 2rem 2rem 0.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s linear;
   text-align: start;
+  width: 50%;
+  z-index: 1;
 }
-.content--alignEnd {
-  text-align: end;
+.content::before {
+  background: white;
+  content: "";
+  height: 100%;
+  top: 0;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: -1;
 }
 .content--altSize {
   width: 70%;
 }
 .content--altOrder {
   order: 2;
-}
-.content--altScheme {
-  background: black;
-  color: white;
 }
 .content--alignStart {
   text-align: start;
@@ -58,6 +60,33 @@
 }
 .content--alignCenter {
   text-align: center;
+}
+.content--purple {
+  color: white;
+}
+.content--purple::before {
+  background: #9b5de5;
+}
+.content--pink::before {
+  background: #f15bb5;
+}
+.content--yellow::before {
+  background: #fee440;
+}
+.content--blue {
+  color: white;
+}
+.content--blue::before {
+  background: #00bbf9;
+}
+.content--teal::before {
+  background: #00f5d4;
+}
+.content--black {
+  color: white;
+}
+.content--black::before {
+  background: black;
 }
 .content__blurb {
   margin-bottom: 3rem;
@@ -87,21 +116,7 @@
   z-index: 2;
 }
 .content--foreground::before {
-  content: "";
-  background: white;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
   opacity: 0.5;
-}
-.content--foreground--altScheme {
-  color: white;
-}
-.content--foreground--altScheme::before {
-  background: black;
 }
 .content--foreground--top {
   margin-top: 0;
@@ -119,31 +134,30 @@
 }
 .content--foreground--alt {
   padding: 2rem;
-  border-radius: 10px;
   max-width: 50%;
 }
 .content--foreground--alt::before {
   opacity: 1;
 }
 .content--foreground--alt--left {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
   margin-left: 0;
 }
 .content--foreground--alt--right {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   margin-right: 0;
 }
 .content--foreground--alt--top {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   margin-top: 0;
   max-width: 75%;
 }
 .content--foreground--alt--bottom {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   margin-bottom: 0;
   max-width: 75%;
 }
@@ -176,12 +190,33 @@
   width: 100%;
   top: 0;
 }
+.image--black {
+  background: black;
+}
+.image--purple {
+  background: #9b5de5;
+}
+.image--pink {
+  background: #f15bb5;
+}
+.image--yellow {
+  background: #fee440;
+}
+.image--blue {
+  background: #00bbf9;
+}
+.image--teal {
+  background: #00f5d4;
+}
+.image--black {
+  background: black;
+}
 .image--circle img {
   border-radius: 50%;
-  left: calc((100% - 25rem) / 2);
+  left: 0;
   top: calc((100% - 25rem) / 2);
   height: 25rem;
-  width: 25rem;
+  width: 100%;
 }
 .image--circle--left {
   left: 0;
@@ -206,6 +241,27 @@
   width: 100%;
   position: absolute;
   z-index: 1;
+}
+.image--background--cover {
+  z-index: 3;
+}
+.image--objectTop {
+  object-position: top;
+}
+.image--objectBottom {
+  object-position: bottom;
+}
+.image--objectLeft {
+  object-position: left;
+}
+.image--objectRight {
+  object-position: right;
+}
+
+.switch {
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0 0.5rem 0 0;
 }
 
 @media screen and (orientation: portrait) {
@@ -246,6 +302,18 @@
     padding: 1rem;
     max-width: 75%;
   }
+  .content--foreground--alt--bottom {
+    max-width: 100%;
+  }
+  .content--foreground--alt--bottom * {
+    margin-bottom: 0.25rem;
+  }
+  .content--foreground--alt--top {
+    max-width: 100%;
+  }
+  .content--foreground--alt--top * {
+    margin-bottom: 0.5rem;
+  }
   .content--altOrder {
     order: 1;
   }
@@ -254,18 +322,26 @@
   }
 }
 @media screen and (min-width: 920px) {
+  .content {
+    padding: 6rem 6rem 0.5rem 6rem;
+  }
   .content--foreground--alt {
     padding: 1rem;
+    max-width: 100%;
+  }
+  .content--foreground--alt--right {
+    max-width: 50%;
+  }
+  .content--foreground--alt--left {
+    max-width: 50%;
   }
   .content__header h1 {
     font-size: 4rem;
   }
 
-  .image--background--circle--left img {
-    left: calc((50% - 25rem) / 2);
-  }
-  .image--background--circle--right img {
-    left: calc((150% - 25rem) / 2);
+  .image--circle img {
+    width: 25rem;
+    left: calc((100% - 25rem) / 2);
   }
 }
 

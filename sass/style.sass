@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap')
 
+$purple: #9b5de5
+$pink: #f15bb5
+$yellow: #fee440
+$blue: #00bbf9
+$teal: #00f5d4
+
+
 *
 	box-sizing: border-box
 	margin: 0
@@ -23,32 +30,57 @@
 	overflow-x: hidden
 
 .content
-	background: white
-	padding: 6rem 6rem .5rem 6rem
-	height: 100%
-	text-align: start
 	display: flex
 	flex-direction: column
-	width: 50%
-	transition: all .5s linear
+	height: auto
 	order: 1
-	&--alignStart
-		text-align: start
-	&--alignEnd
-		text-align: end
+	padding: 2rem 2rem .5rem 2rem
+	position: relative
+	overflow: hidden
+	transition: all .5s linear
+	text-align: start
+	width: 50%
+	z-index: 1
+	&::before
+		background: white
+		content: ''
+		height: 100%
+		top: 0
+		position: absolute
+		left: 0
+		width: 100%
+		z-index: -1
 	&--altSize
 		width: 70%
 	&--altOrder
 		order: 2
-	&--altScheme
-		background: black
-		color: white
 	&--alignStart
 		text-align: start
 	&--alignEnd
 		text-align: end
 	&--alignCenter
 		text-align: center
+	&--purple
+		color: white
+		&::before
+			background: $purple
+	&--pink
+		&::before
+			background: $pink
+	&--yellow
+		&::before
+			background: $yellow
+	&--blue
+		color: white
+		&::before
+			background: $blue
+	&--teal
+		&::before
+			background: $teal
+	&--black
+		color: white
+		&::before
+			background: black
 	&__blurb
 		margin-bottom: 3rem
 	&__button
@@ -71,19 +103,7 @@
 		overflow: hidden
 		z-index: 2
 		&::before
-			content: ''
-			background: white
-			position: absolute
-			height: 100%
-			width: 100%
-			top: 0
-			left: 0
-			z-index: -1
 			opacity: .5
-		&--altScheme
-			color: white
-			&::before
-				background: black
 		&--top
 			margin-top: 0
 		&--left
@@ -96,26 +116,25 @@
 			margin-bottom: 0
 		&--alt
 			padding: 2rem
-			border-radius: 10px
 			max-width: 50%
 			&::before
 				opacity: 1
 			&--left
-				border-top-left-radius: 0
-				border-bottom-left-radius: 0
+				border-bottom-right-radius: 10px
+				border-top-right-radius: 10px
 				margin-left: 0
 			&--right
-				border-top-right-radius: 0
-				border-bottom-right-radius: 0
+				border-top-left-radius: 10px
+				border-bottom-left-radius: 10px
 				margin-right: 0
 			&--top
-				border-top-left-radius: 0
-				border-top-right-radius: 0
+				border-bottom-left-radius: 10px
+				border-bottom-right-radius: 10px
 				margin-top: 0
 				max-width: 75%
 			&--bottom
-				border-bottom-left-radius: 0
-				border-bottom-right-radius: 0
+				border-top-left-radius: 10px
+				border-top-right-radius: 10px
 				margin-bottom: 0
 				max-width: 75%
 	&__header
@@ -144,13 +163,27 @@
 		position: absolute
 		width: 100%
 		top: 0
+	&--black
+		background: black
+	&--purple
+		background: $purple
+	&--pink
+		background: $pink
+	&--yellow
+		background: $yellow
+	&--blue
+		background: $blue
+	&--teal
+		background: $teal
+	&--black
+		background: black
 	&--circle
 		img
 			border-radius: 50%
-			left: calc((100% - 25rem) / 2)
+			left: 0
 			top: calc((100% - 25rem) / 2)
 			height: 25rem
-			width: 25rem
+			width: 100%
 		&--left
 			left: 0
 		&--right
@@ -170,8 +203,21 @@
 		width: 100%
 		position: absolute
 		z-index: 1
+		&--cover
+			z-index: 3
+	&--objectTop
+		object-position: top
+	&--objectBottom
+		object-position: bottom
+	&--objectLeft
+		object-position: left
+	&--objectRight
+		object-position: right
 
-
+.switch
+	cursor: pointer
+	text-decoration: underline
+	padding: 0 .5rem 0 0
 
 
 @media screen and (orientation: portrait)
@@ -194,6 +240,7 @@
 				top: 0
 				height: 100%
 				width: 100%
+
 	.content
 		order: 2
 		padding: 2rem 2rem .5rem 2rem
@@ -203,30 +250,39 @@
 			&--alt
 				padding: 1rem 
 				max-width:75%
+				&--bottom
+					max-width: 100%
+					*
+						margin-bottom: .25rem
+				&--top
+					max-width: 100%
+					*
+						margin-bottom: .5rem
 		&--altOrder
 			order: 1
 		&--altSize
 			padding: 2rem
 
 
-
 @media screen and (min-width: 920px)
 	.content
+		padding: 6rem 6rem .5rem 6rem
 		&--foreground
 			&--alt
 				padding: 1rem
+				max-width: 100%
+				&--right
+					max-width:50%
+				&--left
+					max-width: 50%
 		&__header
 			h1
 				font-size: 4rem
 
 
 	.image
-		&--background
-			&--circle
-				&--left
-					img
-						left: calc((50% - 25rem) / 2)
-				&--right
-					img
-						left: calc((150% - 25rem) / 2)
+		&--circle
+			img
+				width: 25rem
+				left: calc((100% - 25rem) / 2)
 
