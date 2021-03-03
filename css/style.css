@@ -24,7 +24,7 @@
 }
 
 .content {
-  padding: 2.5rem 2.5rem 0.5rem 2.5rem;
+  padding: 6rem 6rem 0.5rem 6rem;
   height: 100%;
   text-align: center;
   display: flex;
@@ -34,7 +34,13 @@
   transition: all 0.5s linear;
   order: 1;
 }
-.content--altWidth {
+.content--alignStart {
+  text-align: start;
+}
+.content--alignEnd {
+  text-align: end;
+}
+.content--altSize {
   width: 70%;
 }
 .content--altOrder {
@@ -59,12 +65,18 @@
   margin: auto;
   padding: 1rem 2rem;
 }
+.content__button--alignLeft {
+  margin-left: 0;
+}
+.content__button--alignRight {
+  margin-right: 0;
+}
 .content--foreground {
   background: none;
-  padding: 2.5rem;
   margin: auto;
   width: 100%;
   position: relative;
+  padding: 6rem;
   overflow: hidden;
   z-index: 2;
 }
@@ -100,6 +112,7 @@
   margin-bottom: 0;
 }
 .content--foreground--alt {
+  padding: 2rem;
   border-radius: 10px;
   max-width: 50%;
 }
@@ -164,10 +177,22 @@
   height: 25rem;
   width: 25rem;
 }
+.image--circle--left {
+  left: 0;
+}
+.image--circle--right {
+  right: 0;
+}
+.image--circle--top img {
+  top: calc((75% - 25rem) / 2);
+}
+.image--circle--bottom img {
+  top: calc((125% - 25rem) / 2);
+}
 .image--altOrder {
   order: 1;
 }
-.image--altWidth {
+.image--altSize {
   width: 30%;
 }
 .image--background {
@@ -176,28 +201,9 @@
   position: absolute;
   z-index: 1;
 }
-.image--background--circle img {
-  border-radius: 50%;
-  left: calc((100% - 25rem) / 2);
-  top: calc((100% - 25rem) / 2);
-  height: 25rem;
-  width: 25rem;
-}
-.image--background--circle--left {
-  left: 0;
-}
-.image--background--circle--right {
-  right: 0;
-}
-.image--background--circle--top img {
-  top: calc((75% - 25rem) / 2);
-}
-.image--background--circle--bottom img {
-  top: calc((125% - 25rem) / 2);
-}
 
 @media screen and (orientation: portrait) {
-  .banner {
+  .banner, .spotlight {
     flex-direction: column;
   }
 
@@ -206,21 +212,44 @@
     order: 1;
     width: 100%;
   }
+  .image--altSize {
+    max-height: 30vh;
+  }
+  .image--altOrder {
+    order: 2;
+  }
   .image--background {
     height: 100%;
   }
+  .image--circle img {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+
   .content {
     order: 2;
+    padding: 2rem 2rem 0.5rem 2rem;
     width: 100%;
+  }
+  .content--foreground {
+    padding: 2rem;
+  }
+  .content--foreground--alt {
+    padding: 1rem;
+    max-width: 75%;
+  }
+  .content--altOrder {
+    order: 1;
+  }
+  .content--altSize {
+    padding: 2rem;
   }
 }
 @media screen and (min-width: 920px) {
-  .content {
-    padding: 6rem 6rem 2rem 6rem;
-    text-align: start;
-  }
-  .content--foreground {
-    padding: 6rem;
+  .content--foreground--alt {
+    padding: 1rem;
   }
   .content__header h1 {
     font-size: 4rem;
