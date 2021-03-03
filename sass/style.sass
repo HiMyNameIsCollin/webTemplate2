@@ -23,13 +23,13 @@
 	overflow-x: hidden
 
 .content
+	background: white
 	padding: 6rem 6rem .5rem 6rem
 	height: 100%
-	text-align: center
+	text-align: start
 	display: flex
 	flex-direction: column
 	width: 50%
-	background: white
 	transition: all .5s linear
 	order: 1
 	&--alignStart
@@ -47,17 +47,21 @@
 		text-align: start
 	&--alignEnd
 		text-align: end
+	&--alignCenter
+		text-align: center
 	&__blurb
 		margin-bottom: 3rem
 	&__button
 		border-radius: 10px
 		font-size: 1.5rem
-		margin: auto
+		margin: auto auto auto 0
 		padding: 1rem 2rem
 		&--alignLeft
 			margin-left: 0
 		&--alignRight
-			margin-right: 0
+			margin: auto 0 auto auto
+		&--alignCenter
+			margin: auto
 	&--foreground
 		background: none
 		margin: auto

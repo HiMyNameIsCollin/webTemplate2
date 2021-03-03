@@ -24,13 +24,13 @@
 }
 
 .content {
+  background: white;
   padding: 6rem 6rem 0.5rem 6rem;
   height: 100%;
-  text-align: center;
+  text-align: start;
   display: flex;
   flex-direction: column;
   width: 50%;
-  background: white;
   transition: all 0.5s linear;
   order: 1;
 }
@@ -56,20 +56,26 @@
 .content--alignEnd {
   text-align: end;
 }
+.content--alignCenter {
+  text-align: center;
+}
 .content__blurb {
   margin-bottom: 3rem;
 }
 .content__button {
   border-radius: 10px;
   font-size: 1.5rem;
-  margin: auto;
+  margin: auto auto auto 0;
   padding: 1rem 2rem;
 }
 .content__button--alignLeft {
   margin-left: 0;
 }
 .content__button--alignRight {
-  margin-right: 0;
+  margin: auto 0 auto auto;
+}
+.content__button--alignCenter {
+  margin: auto;
 }
 .content--foreground {
   background: none;
