@@ -41,6 +41,24 @@ $teal: #00f5d4
 	text-align: start
 	width: 50%
 	z-index: 1
+	&__blurb
+		margin-bottom: 3rem
+	&__button
+		background: none
+		border-radius: 40px
+		border-width: 2px
+		border-color: inherit
+		border-style: solid
+		color: inherit
+		font-size: 1.5rem
+		margin: auto auto auto 0
+		padding: 1rem 3rem
+		&--alignLeft
+			margin-left: 0
+		&--alignRight
+			margin: auto 0 auto auto
+		&--alignCenter
+			margin: auto
 	&::before
 		background: white
 		content: ''
@@ -64,6 +82,8 @@ $teal: #00f5d4
 		color: white
 		&::before
 			background: $purple
+		&__button
+			border-color: white
 	&--pink
 		&::before
 			background: $pink
@@ -71,29 +91,20 @@ $teal: #00f5d4
 		&::before
 			background: $yellow
 	&--blue
+		border-color: white
 		color: white
 		&::before
 			background: $blue
+		&__button
+			border-color: white
 	&--teal
 		&::before
 			background: $teal
 	&--black
+		border-color: white
 		color: white
 		&::before
 			background: black
-	&__blurb
-		margin-bottom: 3rem
-	&__button
-		border-radius: 10px
-		font-size: 1.5rem
-		margin: auto auto auto 0
-		padding: 1rem 2rem
-		&--alignLeft
-			margin-left: 0
-		&--alignRight
-			margin: auto 0 auto auto
-		&--alignCenter
-			margin: auto
 	&--foreground
 		background: none
 		margin: auto
@@ -205,19 +216,33 @@ $teal: #00f5d4
 		z-index: 1
 		&--cover
 			z-index: 3
-	&--objectTop
-		object-position: top
-	&--objectBottom
-		object-position: bottom
-	&--objectLeft
-		object-position: left
-	&--objectRight
-		object-position: right
+	&--imgPos1
+		img
+			object-position: 50% 25%
+			object-fit: none
+	&--imgPos2
+		img
+			object-position: 0% 50%
+			object-fit: none
+	&--imgPos3
+		img
+			object-position: 50% 50%
+			object-fit: none
+	&--imgPos4
+		img
+			object-position: 100% 50%
+			object-fit: none
+	&--imgPos5
+		img
+			object-position: 50% 100%
+			object-fit: none
 
 .switch
 	cursor: pointer
 	text-decoration: underline
 	padding: 0 .5rem 0 0
+	&--hidden
+		display: none
 
 
 @media screen and (orientation: portrait)

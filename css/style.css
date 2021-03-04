@@ -36,6 +36,29 @@
   width: 50%;
   z-index: 1;
 }
+.content__blurb {
+  margin-bottom: 3rem;
+}
+.content__button {
+  background: none;
+  border-radius: 40px;
+  border-width: 2px;
+  border-color: inherit;
+  border-style: solid;
+  color: inherit;
+  font-size: 1.5rem;
+  margin: auto auto auto 0;
+  padding: 1rem 3rem;
+}
+.content__button--alignLeft {
+  margin-left: 0;
+}
+.content__button--alignRight {
+  margin: auto 0 auto auto;
+}
+.content__button--alignCenter {
+  margin: auto;
+}
 .content::before {
   background: white;
   content: "";
@@ -67,6 +90,9 @@
 .content--purple::before {
   background: #9b5de5;
 }
+.content--purple__button {
+  border-color: white;
+}
 .content--pink::before {
   background: #f15bb5;
 }
@@ -74,37 +100,24 @@
   background: #fee440;
 }
 .content--blue {
+  border-color: white;
   color: white;
 }
 .content--blue::before {
   background: #00bbf9;
 }
+.content--blue__button {
+  border-color: white;
+}
 .content--teal::before {
   background: #00f5d4;
 }
 .content--black {
+  border-color: white;
   color: white;
 }
 .content--black::before {
   background: black;
-}
-.content__blurb {
-  margin-bottom: 3rem;
-}
-.content__button {
-  border-radius: 10px;
-  font-size: 1.5rem;
-  margin: auto auto auto 0;
-  padding: 1rem 2rem;
-}
-.content__button--alignLeft {
-  margin-left: 0;
-}
-.content__button--alignRight {
-  margin: auto 0 auto auto;
-}
-.content__button--alignCenter {
-  margin: auto;
 }
 .content--foreground {
   background: none;
@@ -245,23 +258,34 @@
 .image--background--cover {
   z-index: 3;
 }
-.image--objectTop {
-  object-position: top;
+.image--imgPos1 img {
+  object-position: 50% 25%;
+  object-fit: none;
 }
-.image--objectBottom {
-  object-position: bottom;
+.image--imgPos2 img {
+  object-position: 0% 50%;
+  object-fit: none;
 }
-.image--objectLeft {
-  object-position: left;
+.image--imgPos3 img {
+  object-position: 50% 50%;
+  object-fit: none;
 }
-.image--objectRight {
-  object-position: right;
+.image--imgPos4 img {
+  object-position: 100% 50%;
+  object-fit: none;
+}
+.image--imgPos5 img {
+  object-position: 50% 100%;
+  object-fit: none;
 }
 
 .switch {
   cursor: pointer;
   text-decoration: underline;
   padding: 0 0.5rem 0 0;
+}
+.switch--hidden {
+  display: none;
 }
 
 @media screen and (orientation: portrait) {
