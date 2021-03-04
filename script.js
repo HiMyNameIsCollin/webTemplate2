@@ -24,10 +24,6 @@ const bannerStyles = [
 		image: ['image--background']
 	},
 	{
-		content: ['content--foreground', 'content--foreground--alt'],
-		image: ['image--background']
-	},
-	{
 		content: ['content--foreground', 'content--foreground--alt', 'content--foreground--alt--right'],
 		image: ['image--background']
 	},
@@ -132,14 +128,15 @@ bannerStyleSwitch.addEventListener('click', (e) => {
 	e.stopPropagation()
 	handleStyle(bannerStyles, bannerContent, bannerImage, bannerStyleCounter)
 	if(bannerStyleCounter < bannerStyles.length ){
-		const handleBannerClick = (e) => {
-			e.stopPropagation()
-			handleStyle(bannerStyles, bannerContent, bannerImage, bannerStyleCounter)
-			bannerImage.removeEventListener('click', handleBannerClick)
-		}
-		if(bannerStyleCounter === 2){
-			bannerImage.addEventListener('click', handleBannerClick)
-		}
+		bannerStyleCounter++
+	}else {
+		bannerStyleCounter = 0 
+	}
+})
+bannerImage.addEventListener('click', (e) => {
+	e.stopPropagation()
+	handleStyle(bannerStyles, bannerContent, bannerImage, bannerStyleCounter)
+	if(bannerStyleCounter < bannerStyles.length ){
 		bannerStyleCounter++
 	}else {
 		bannerStyleCounter = 0 
