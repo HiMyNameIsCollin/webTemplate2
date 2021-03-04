@@ -6,6 +6,19 @@ $yellow: #fee440
 $blue: #00bbf9
 $teal: #00f5d4
 
+@mixin psuedoBackground
+	position: relative
+	overflow: hidden
+	z-index: 1
+	&::before
+		background: white
+		content: ''
+		height: 100%
+		left: 0
+		position: absolute
+		top:0
+		width: 100%
+		z-index: -1
 
 *
 	box-sizing: border-box
@@ -15,69 +28,53 @@ $teal: #00f5d4
 	font-family: 'Montserrat', sans-serif
 	line-height: 1.5
 
+.switch
+	cursor: pointer
+	text-decoration: underline
+	padding: 0 .5rem 0 0
+	&--hidden
+		display: no
+
 .banner
+	@media only screen and (orientation: portrait) 
+		flex-direction: column
+	@media only screen and (min-width: 920px)
+
 	display: flex
 	flex-direction: row
 	min-height: 100vh
-
-	position: relative
-	overflow-x: hidden
-
-.spotlight
-	display: flex
-	flex-direction: row
 	position: relative
 	overflow-x: hidden
 
 .content
+	@media only screen and (orientation: portrait) 
+		order: 2
+		padding: 2rem 2rem .5rem 2rem
+		width: 100%
+	@include psuedoBackground
 	display: flex
 	flex-direction: column
 	height: auto
-	order: 1
-	padding: 2rem 2rem .5rem 2rem
-	position: relative
-	overflow: hidden
-	transition: all .5s linear
-	text-align: start
+	padding: 6rem 6rem .5rem 6rem
 	width: 50%
-	z-index: 1
-	&__blurb
-		margin-bottom: 3rem
-	&__button
-		background: none
-		border-radius: 40px
-		border-width: 2px
-		border-color: inherit
-		border-style: solid
-		color: inherit
-		font-size: 1.5rem
-		margin: auto auto auto 0
-		padding: 1rem 3rem
-		&--alignLeft
-			margin-left: 0
-		&--alignRight
-			margin: auto 0 auto auto
-		&--alignCenter
-			margin: auto
-	&::before
-		background: white
-		content: ''
-		height: 100%
-		top: 0
-		position: absolute
-		left: 0
-		width: 100%
-		z-index: -1
-	&--altSize
-		width: 70%
-	&--altOrder
-		order: 2
-	&--alignStart
-		text-align: start
+	*
+		margin-bottom: 1rem
+	&__header
+		h1, h2
+			font-size: 4rem
+			font-weight: 700
+		p
+			font-size: 1.25rem
 	&--alignEnd
 		text-align: end
+		.content__button
+			margin: auto 0 auto auto
 	&--alignCenter
 		text-align: center
+		.content__button
+			margin: auto
+	&--altOrder
+		order: 2
 	&--purple
 		color: white
 		&::before
@@ -105,117 +102,84 @@ $teal: #00f5d4
 		color: white
 		&::before
 			background: black
-	&--foreground
-		background: none
+	&--front
+		@media only screen and (orientation: portrait) 
+			padding: 2rem
+		border-radius: 10px
 		margin: auto
-		width: 100%
-		position: relative
 		padding: 6rem
+		position: relative
 		overflow: hidden
 		z-index: 2
 		&::before
-			opacity: .5
-		&--top
-			margin-top: 0
-		&--left
-			margin-left: 0
-			width: 50%
-		&--right
-			margin-right: 0
-			width: 50%
-		&--bottom
-			margin-bottom: 0
+			opacity: 0.5
 		&--alt
-			padding: 2rem
-			max-width: 50%
 			&::before
 				opacity: 1
-			&--left
-				border-bottom-right-radius: 10px
-				border-top-right-radius: 10px
-				margin-left: 0
-			&--right
-				border-top-left-radius: 10px
-				border-bottom-left-radius: 10px
-				margin-right: 0
-			&--top
-				border-bottom-left-radius: 10px
-				border-bottom-right-radius: 10px
-				margin-top: 0
-				max-width: 75%
-			&--bottom
-				border-top-left-radius: 10px
-				border-top-right-radius: 10px
-				margin-bottom: 0
-				max-width: 75%
-	&__header
-		margin-bottom: 1.5rem
-		h1, h2
-			margin-bottom: 1rem
-			font-size: 2rem
-			font-weight: 400
-		p
-			font-size: 1.25rem
+		&--left
+			border-top-left-radius: 0
+			border-bottom-left-radius: 0
+			margin-left: 0
+			padding: 2rem
+		&--top
+			border-top-left-radius: 0
+			border-top-right-radius: 0
+			margin-top: 0
+			padding: 2rem
+		&--right
+			border-top-right-radius: 0
+			border-bottom-right-radius: 0
+			margin-right: 0
+			padding: 2rem
+		&--bottom
+			border-bottom-left-radius: 0
+			border-bottom-right-radius: 0
+			margin-bottom: 0
+			padding: 2rem
+
 
 
 
 .image
+	@media only screen and (orientation: portrait) 
+		height: 50vh
+		order: 1
+		width: 100%
+	@include psuedoBackground
+	order: 2
 	background: black
+	display: flex
 	height: auto
 	position: relative
-	width: 50%
-	transition: all .5s linear
 	order: 2
+	transition: all .5s linear
+	width: 50%
 	img
 		height: 100%
 		left: 0
 		max-width: 100%
 		object-fit: cover
 		position: absolute
-		width: 100%
 		top: 0
-	&--black
-		background: black
-	&--purple
-		background: $purple
-	&--pink
-		background: $pink
-	&--yellow
-		background: $yellow
-	&--blue
-		background: $blue
-	&--teal
-		background: $teal
-	&--black
-		background: black
-	&--circle
-		img
-			border-radius: 50%
-			left: 0
-			top: calc((100% - 25rem) / 2)
-			height: 25rem
-			width: 100%
-		&--left
-			left: 0
-		&--right
-			right: 0
-		&--top
-			img
-				top: calc((75% - 25rem) / 2)
-		&--bottom
-			img
-				top: calc((125% - 25rem) / 2)
+		width: 100%
 	&--altOrder
 		order: 1
-	&--altSize
-		width: 30%
-	&--background
+	&--back
 		height: 100%
-		width: 100%
 		position: absolute
-		z-index: 1
-		&--cover
-			z-index: 3
+		width: 100%
+	&--purple
+		&::before
+			background: $purple
+	&--pink
+		&::before
+			background: $pink
+	&--yellow
+		&::before
+			background: $yellow
+	&--blue
+		&::before
+			background: $blue
 	&--imgPos1
 		img
 			object-position: 50% 25%
@@ -237,77 +201,32 @@ $teal: #00f5d4
 			object-position: 50% 100%
 			object-fit: none
 
-.switch
-	cursor: pointer
-	text-decoration: underline
-	padding: 0 .5rem 0 0
-	&--hidden
-		display: none
-
-
-@media screen and (orientation: portrait)
-	.banner, .spotlight
-		flex-direction: column
-
-	.image
-		height: 50vh
-		order: 1
-		width: 100%
-		&--altSize
-			max-height: 30vh
-		&--altOrder
-			order: 2
-		&--background
-			height: 100%
-		&--circle
-			img
-				left: 0
-				top: 0
-				height: 100%
+	&--teal
+		&::before
+			background: $teal
+	&--black
+		&::before
+			background: black
+	&--circle
+		img
+			@media only screen and (orientation: portrait)
+				max-width: 25rem
 				width: 100%
-
-	.content
-		order: 2
-		padding: 2rem 2rem .5rem 2rem
-		width: 100%
-		&--foreground
-			padding: 2rem
-			&--alt
-				padding: 1rem 
-				max-width:75%
-				&--bottom
-					max-width: 100%
-					*
-						margin-bottom: .25rem
-				&--top
-					max-width: 100%
-					*
-						margin-bottom: .5rem
-		&--altOrder
-			order: 1
-		&--altSize
-			padding: 2rem
+			border-radius: 50%
+			position: relative
+			left: 0
+			height: 25rem
+			width: 25rem
+			margin: auto
+			&--left
+				margin-left: 0
+			&--top
+				margin-top: 0
+			&--right
+				margin-right: 0
+			&--bottom
+				margin-bottom: 0
 
 
-@media screen and (min-width: 920px)
-	.content
-		padding: 6rem 6rem .5rem 6rem
-		&--foreground
-			&--alt
-				padding: 1rem
-				max-width: 100%
-				&--right
-					max-width:50%
-				&--left
-					max-width: 50%
-		&__header
-			h1
-				font-size: 4rem
 
-
-	.image
-		&--circle
-			img
-				width: 25rem
-				left: calc((100% - 25rem) / 2)
 
