@@ -33,38 +33,59 @@ $teal: #00f5d4
 	text-decoration: underline
 	padding: 0 .5rem 0 0
 	&--hidden
-		display: no
+		display: none
 
 .banner
 	@media only screen and (orientation: portrait) 
 		flex-direction: column
 	@media only screen and (min-width: 920px)
-
 	display: flex
 	flex-direction: row
 	min-height: 100vh
 	position: relative
 	overflow-x: hidden
 
+.spotlight
+	display: flex
+	flex-direction: row
+	position: relative
+	overflow-x: hidden
+	.content
+		&--front
+			border-radius: 0
+
 .content
 	@media only screen and (orientation: portrait) 
 		order: 2
-		padding: 2rem 2rem .5rem 2rem
 		width: 100%
+	@media only screen and (min-width: 920px)
+		padding: 6rem 6rem .5rem 6rem 
 	@include psuedoBackground
 	display: flex
 	flex-direction: column
 	height: auto
-	padding: 6rem 6rem .5rem 6rem
+	padding: 2rem 2rem .5rem 2rem
+	transition: all .5s linear
 	width: 50%
 	*
 		margin-bottom: 1rem
 	&__header
-		h1, h2
+		h1
 			font-size: 4rem
-			font-weight: 700
+		h2
+			font-size: 2rem
 		p
 			font-size: 1.25rem
+	&__button
+		background: none
+		border-radius: 40px
+		border-width: 2px
+		border-color: inherit
+		border-style: solid
+		color: inherit
+		font-size: 1.5rem
+		margin: auto auto auto 0
+		padding: 1rem 3rem
 	&--alignEnd
 		text-align: end
 		.content__button
@@ -74,7 +95,11 @@ $teal: #00f5d4
 		.content__button
 			margin: auto
 	&--altOrder
+		@media only screen and (orientation: portrait) 
+			order: 1
 		order: 2
+	&--altSize
+		width: 70%
 	&--purple
 		color: white
 		&::before
@@ -103,39 +128,44 @@ $teal: #00f5d4
 		&::before
 			background: black
 	&--front
-		@media only screen and (orientation: portrait) 
-			padding: 2rem
+		@media only screen and (max-width: 920px) 
+			padding: 1rem
+			width: auto
 		border-radius: 10px
 		margin: auto
-		padding: 6rem
+		padding: 3rem
 		position: relative
 		overflow: hidden
 		z-index: 2
 		&::before
 			opacity: 0.5
-		&--alt
+		&--altLeft
+			margin-left: 1rem
+		&--altRight
+			margin-right: 1rem
+		&--altBottom
+			margin-bottom: 1rem
+		&--altTop
+			margin-top: 1em
+		&--full
 			&::before
 				opacity: 1
+		&--top
+			border-bottom-right-radius: 0
+			border-bottom-left-radius:0
+			margin-top: 0
 		&--left
 			border-top-left-radius: 0
 			border-bottom-left-radius: 0
 			margin-left: 0
-			padding: 2rem
-		&--top
-			border-top-left-radius: 0
-			border-top-right-radius: 0
-			margin-top: 0
-			padding: 2rem
 		&--right
 			border-top-right-radius: 0
 			border-bottom-right-radius: 0
 			margin-right: 0
-			padding: 2rem
 		&--bottom
 			border-bottom-left-radius: 0
 			border-bottom-right-radius: 0
 			margin-bottom: 0
-			padding: 2rem
 
 
 
@@ -146,7 +176,6 @@ $teal: #00f5d4
 		order: 1
 		width: 100%
 	@include psuedoBackground
-	order: 2
 	background: black
 	display: flex
 	height: auto
@@ -164,10 +193,16 @@ $teal: #00f5d4
 		width: 100%
 	&--altOrder
 		order: 1
+		@media only screen and (orientation: portrait) 
+			order: 2
+	&--altSize
+		width: 30%
 	&--back
 		height: 100%
 		position: absolute
 		width: 100%
+		&--cover
+			z-index: 3
 	&--purple
 		&::before
 			background: $purple
@@ -210,23 +245,26 @@ $teal: #00f5d4
 	&--circle
 		img
 			@media only screen and (orientation: portrait)
-				max-width: 25rem
 				width: 100%
 			border-radius: 50%
 			position: relative
 			left: 0
-			height: 25rem
+			height: Min(100%, 20rem)
 			width: 25rem
 			margin: auto
-			&--left
-				margin-left: 0
-			&--top
-				margin-top: 0
-			&--right
-				margin-right: 0
-			&--bottom
-				margin-bottom: 0
-
+			max-width: Min(100%, 20rem)
+		&--left
+			img
+				margin-left: 1rem
+		&--top
+			img
+				margin-top: 1rem
+		&--right
+			img
+				margin-right: 1rem
+		&--bottom
+			img
+				margin-bottom: 1rem
 
 
 

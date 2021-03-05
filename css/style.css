@@ -14,7 +14,7 @@
   padding: 0 0.5rem 0 0;
 }
 .switch--hidden {
-  display: no;
+  display: none;
 }
 
 .banner {
@@ -29,6 +29,16 @@
     flex-direction: column;
   }
 }
+.spotlight {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  overflow-x: hidden;
+}
+.spotlight .content--front {
+  border-radius: 0;
+}
+
 .content {
   position: relative;
   overflow: hidden;
@@ -36,14 +46,19 @@
   display: flex;
   flex-direction: column;
   height: auto;
-  padding: 6rem 6rem 0.5rem 6rem;
+  padding: 2rem 2rem 0.5rem 2rem;
+  transition: all 0.5s linear;
   width: 50%;
 }
 @media only screen and (orientation: portrait) {
   .content {
     order: 2;
-    padding: 2rem 2rem 0.5rem 2rem;
     width: 100%;
+  }
+}
+@media only screen and (min-width: 920px) {
+  .content {
+    padding: 6rem 6rem 0.5rem 6rem;
   }
 }
 .content::before {
@@ -59,12 +74,25 @@
 .content * {
   margin-bottom: 1rem;
 }
-.content__header h1, .content__header h2 {
+.content__header h1 {
   font-size: 4rem;
-  font-weight: 700;
+}
+.content__header h2 {
+  font-size: 2rem;
 }
 .content__header p {
   font-size: 1.25rem;
+}
+.content__button {
+  background: none;
+  border-radius: 40px;
+  border-width: 2px;
+  border-color: inherit;
+  border-style: solid;
+  color: inherit;
+  font-size: 1.5rem;
+  margin: auto auto auto 0;
+  padding: 1rem 3rem;
 }
 .content--alignEnd {
   text-align: end;
@@ -80,6 +108,14 @@
 }
 .content--altOrder {
   order: 2;
+}
+@media only screen and (orientation: portrait) {
+  .content--altOrder {
+    order: 1;
+  }
+}
+.content--altSize {
+  width: 70%;
 }
 .content--purple {
   color: white;
@@ -119,52 +155,60 @@
 .content--front {
   border-radius: 10px;
   margin: auto;
-  padding: 6rem;
+  padding: 3rem;
   position: relative;
   overflow: hidden;
   z-index: 2;
 }
-@media only screen and (orientation: portrait) {
+@media only screen and (max-width: 920px) {
   .content--front {
-    padding: 2rem;
+    padding: 1rem;
+    width: auto;
   }
 }
 .content--front::before {
   opacity: 0.5;
 }
-.content--front--alt::before {
+.content--front--altLeft {
+  margin-left: 1rem;
+}
+.content--front--altRight {
+  margin-right: 1rem;
+}
+.content--front--altBottom {
+  margin-bottom: 1rem;
+}
+.content--front--altTop {
+  margin-top: 1em;
+}
+.content--front--full::before {
   opacity: 1;
+}
+.content--front--top {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-top: 0;
 }
 .content--front--left {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   margin-left: 0;
-  padding: 2rem;
-}
-.content--front--top {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  margin-top: 0;
-  padding: 2rem;
 }
 .content--front--right {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   margin-right: 0;
-  padding: 2rem;
 }
 .content--front--bottom {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   margin-bottom: 0;
-  padding: 2rem;
 }
 
 .image {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  order: 2;
   background: black;
   display: flex;
   height: auto;
@@ -202,10 +246,21 @@
 .image--altOrder {
   order: 1;
 }
+@media only screen and (orientation: portrait) {
+  .image--altOrder {
+    order: 2;
+  }
+}
+.image--altSize {
+  width: 30%;
+}
 .image--back {
   height: 100%;
   position: absolute;
   width: 100%;
+}
+.image--back--cover {
+  z-index: 3;
 }
 .image--purple::before {
   background: #9b5de5;
@@ -249,27 +304,27 @@
   border-radius: 50%;
   position: relative;
   left: 0;
-  height: 25rem;
+  height: min(100%, 20rem);
   width: 25rem;
   margin: auto;
+  max-width: min(100%, 20rem);
 }
 @media only screen and (orientation: portrait) {
   .image--circle img {
-    max-width: 25rem;
     width: 100%;
   }
 }
-.image--circle img--left {
-  margin-left: 0;
+.image--circle--left img {
+  margin-left: 1rem;
 }
-.image--circle img--top {
-  margin-top: 0;
+.image--circle--top img {
+  margin-top: 1rem;
 }
-.image--circle img--right {
-  margin-right: 0;
+.image--circle--right img {
+  margin-right: 1rem;
 }
-.image--circle img--bottom {
-  margin-bottom: 0;
+.image--circle--bottom img {
+  margin-bottom: 1rem;
 }
 
 /*# sourceMappingURL=style.css.map */
