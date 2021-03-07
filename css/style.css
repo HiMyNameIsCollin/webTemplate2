@@ -35,6 +35,11 @@
   position: relative;
   overflow-x: hidden;
 }
+@media only screen and (orientation: portrait) {
+  .spotlight {
+    flex-direction: column;
+  }
+}
 .spotlight .content--front {
   border-radius: 0;
 }
@@ -117,6 +122,11 @@
 .content--altSize {
   width: 70%;
 }
+@media only screen and (orientation: portrait) {
+  .content--altSize {
+    width: 100%;
+  }
+}
 .content--purple {
   color: white;
 }
@@ -181,7 +191,10 @@
 .content--front--altTop {
   margin-top: 1em;
 }
-.content--front--full::before {
+.content--front--closed p, .content--front--closed a {
+  display: none;
+}
+.content--front--closed::before {
   opacity: 1;
 }
 .content--front--top {
@@ -253,6 +266,11 @@
 }
 .image--altSize {
   width: 30%;
+}
+@media only screen and (orientation: portrait) {
+  .image--altSize {
+    width: 100%;
+  }
 }
 .image--back {
   height: 100%;

@@ -8,7 +8,7 @@ const panelStyles = [
 		['image--back']
 	],
 	[
-		['content--front', 'content--front--full'],
+		['content--front', 'content--front--closed'],
 		['image--back']
 	],
 	[
@@ -150,7 +150,12 @@ function Panel(element) {
 const banner = new Panel(document.getElementById('banner'))
 const spotlight1 = new Panel(document.getElementById('spotlight1'))
 const spotlight2 = new Panel(document.getElementById('spotlight2'))
-
+document.getElementById('banner').children[0].children[0].addEventListener('click', (e) => {
+	e.stopPropagation()
+	console.log(document.getElementById('banner').children[0].children[1])
+	document.getElementById('banner').children[0].children[1].style.display = 'block'
+	document.getElementById('banner').children[0].children[2].style.display = 'block'
+})
 const handleStyle = (styles, counter, element1, element2) => {
 	const removeClass = (style1, style2, element1, element2) => {
 		if(style1){

@@ -46,6 +46,8 @@ $teal: #00f5d4
 	overflow-x: hidden
 
 .spotlight
+	@media only screen and (orientation: portrait) 
+		flex-direction: column
 	display: flex
 	flex-direction: row
 	position: relative
@@ -99,6 +101,8 @@ $teal: #00f5d4
 			order: 1
 		order: 2
 	&--altSize
+		@media only screen and (orientation: portrait)
+			width: 100%
 		width: 70%
 	&--purple
 		color: white
@@ -147,7 +151,9 @@ $teal: #00f5d4
 			margin-bottom: 1rem
 		&--altTop
 			margin-top: 1em
-		&--full
+		&--closed
+			p, a
+				display: none
 			&::before
 				opacity: 1
 		&--top
@@ -196,6 +202,8 @@ $teal: #00f5d4
 		@media only screen and (orientation: portrait) 
 			order: 2
 	&--altSize
+		@media only screen and (orientation: portrait)
+			width: 100%
 		width: 30%
 	&--back
 		height: 100%
