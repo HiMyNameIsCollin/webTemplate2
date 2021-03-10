@@ -20,6 +20,9 @@ $teal: #00f5d4
 		width: 100%
 		z-index: -1
 
+a
+	cursor: pointer
+
 *
 	box-sizing: border-box
 	margin: 0
@@ -323,6 +326,7 @@ $teal: #00f5d4
 			object-fit: cover
 		figcaption
 			@include pseudoBackground
+			pointer-events: none
 			color: inherit
 			display: flex
 			flex-direction: column
@@ -334,14 +338,18 @@ $teal: #00f5d4
 			opacity: 0
 			left: 0
 			top: 0
+			visibility: hidden
 			width: 100%
 			*
 				margin-bottom: .5rem
 			a
+				pointer-events: auto
 				margin: .5rem auto .5rem auto
 				padding: .5rem 2rem
-			&:hover
-				opacity: 0.75
+		&:hover
+			figcaption
+				opacity: 1
+				visibility: visible
 	&__container
 		position: relative
 		height: auto
@@ -493,8 +501,6 @@ $teal: #00f5d4
 	margin: 1rem auto 0 auto
 	a
 		color: inherit
-	@media only screen and (min-width: 920)
-
 .form
 	@media only screen and (min-width: 920px)
 		padding: .5rem 6rem .5rem 6rem
@@ -524,3 +530,32 @@ $teal: #00f5d4
 			outline: none
 	&__button
 		margin: 1rem auto
+
+.fullImage
+	@include pseudoBackground
+	align-items: center
+	display: flex
+	left: 0
+	justify-content: center
+	height: 100%
+	position: fixed
+	top: 0
+	width: 100%
+	z-index: 1
+	&::before
+		background: black
+		opacity: 0.75
+	span
+		color: white
+		font-size: 2rem
+		top: 1rem
+		position: absolute
+		right: 1rem
+	figure
+		width: 100%
+		@media only screen and (min-width: 920px)
+			width: 50%
+		img
+			height: auto
+			max-width: 100%
+			object-fit: cover

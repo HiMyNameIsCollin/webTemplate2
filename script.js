@@ -277,7 +277,23 @@ class Gallery{
 	this.forwardBtn.addEventListener('mouseover', handleTrackNext)
 	this.styleSwitch.addEventListener('click', () => {handleStyle(galleryStyles, this.styleCounter, this.gallery), this.styleCounter < galleryStyles.length ? this.styleCounter++ : this.styleCounter = 0})
 	this.colorSwitch.addEventListener('click', () => {handleStyle(galleryColorStyles, this.colorCounter, this.gallery), this.colorCounter < galleryColorStyles.length ? this.colorCounter++ : this.colorCounter = 0})
+	Array.from(this.track.children).forEach(e => e.children[0].addEventListener('click', enlargeImage))
 	}
+}
+
+const enlargeImage = (e) => {
+	const figureNode = document.createElement('FIGURE')
+	const sectionNode = document.createElement('SECTION')
+	const imgNode = document.createElement('IMG')
+	const closeNode = document.createElement('SPAN')
+	sectionNode.classList.add('fullImage')
+	sectionNode.appendChild(figureNode)
+	sectionNode.appendChild(closeNode)
+	figureNode.appendChild(imgNode)
+	closeNode.innerHTML = `<i class="far fa-times-circle"></i>`
+	imgNode.outerHTML = `<img src='${e.target.src}' alt='${e.target.src}'/>`
+	document.querySelector('body').appendChild(sectionNode)
+	closeNode.addEventListener('click', () => document.querySelector('body').removeChild(sectionNode) )
 }
 
 const handleTrackNext = (e) => {

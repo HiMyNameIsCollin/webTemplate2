@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap");
+a {
+  cursor: pointer;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -431,6 +435,7 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
+  pointer-events: none;
   color: inherit;
   display: flex;
   flex-direction: column;
@@ -442,6 +447,7 @@
   opacity: 0;
   left: 0;
   top: 0;
+  visibility: hidden;
   width: 100%;
 }
 .gallery__slide figcaption::before {
@@ -458,11 +464,13 @@
   margin-bottom: 0.5rem;
 }
 .gallery__slide figcaption a {
+  pointer-events: auto;
   margin: 0.5rem auto 0.5rem auto;
   padding: 0.5rem 2rem;
 }
-.gallery__slide figcaption:hover {
-  opacity: 0.75;
+.gallery__slide:hover figcaption {
+  opacity: 1;
+  visibility: visible;
 }
 .gallery__container {
   position: relative;
@@ -677,6 +685,7 @@
 .mediaIcons a {
   color: inherit;
 }
+
 .form {
   display: flex;
   flex-wrap: wrap;
@@ -718,6 +727,55 @@
 }
 .form__button {
   margin: 1rem auto;
+}
+
+.fullImage {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  align-items: center;
+  display: flex;
+  left: 0;
+  justify-content: center;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.fullImage::before {
+  background: white;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+.fullImage::before {
+  background: black;
+  opacity: 0.75;
+}
+.fullImage span {
+  color: white;
+  font-size: 2rem;
+  top: 1rem;
+  position: absolute;
+  right: 1rem;
+}
+.fullImage figure {
+  width: 100%;
+}
+@media only screen and (min-width: 920px) {
+  .fullImage figure {
+    width: 50%;
+  }
+}
+.fullImage figure img {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
 }
 
 /*# sourceMappingURL=style.css.map */
