@@ -6,7 +6,7 @@ $yellow: #fee440
 $blue: #00bbf9
 $teal: #00f5d4
 
-@mixin psuedoBackground
+@mixin pseudoBackground
 	position: relative
 	overflow: hidden
 	z-index: 1
@@ -27,8 +27,14 @@ $teal: #00f5d4
 	font-family: 'Source Sans Pro', sans-serif
 	font-family: 'Montserrat', sans-serif
 	line-height: 1.5
+	transition: all .25s ease-in-out
+
 
 .switch
+	@media only screen and (min-width: 920px)
+		&:hover
+			color: $blue
+			text-decoration: none
 	cursor: pointer
 	text-decoration: underline
 	padding: 0 .5rem 0 0
@@ -62,22 +68,28 @@ $teal: #00f5d4
 		width: 100%
 	@media only screen and (min-width: 920px)
 		padding: 6rem 6rem .5rem 6rem 
-	@include psuedoBackground
+	@include pseudoBackground
 	display: flex
 	flex-direction: column
 	height: auto
 	padding: 2rem 2rem .5rem 2rem
-	transition: all .5s linear
 	width: 50%
-	*
-		margin-bottom: 1rem
 	&__header
 		h1
+			@media only screen and (max-width: 920px)
+				font-size: 2rem
 			font-size: 4rem
+			margin-top: 0
 		h2
+			@media only screen and (max-width: 920px)
+				font-size: 1.25rem
 			font-size: 2rem
+			margin-top: 0
 		p
+			@media only screen and (max-width: 920px)
+				font-size: 1rem
 			font-size: 1.25rem
+			margin-top: 1rem
 	&__button
 		background: none
 		border-radius: 40px
@@ -86,16 +98,20 @@ $teal: #00f5d4
 		border-style: solid
 		color: inherit
 		font-size: 1.5rem
-		margin: auto auto auto 0
+		margin: 1rem auto auto 0
 		padding: 1rem 3rem
+	&__blurb
+		@media only screen and (max-width: 920px)
+			font-size: .9rem
+		margin-top: 1rem
 	&--alignEnd
 		text-align: end
 		.content__button
-			margin: auto 0 auto auto
+			margin: 1rem 0 auto auto
 	&--alignCenter
 		text-align: center
 		.content__button
-			margin: auto
+			margin: 1rem auto auto auto
 	&--altOrder
 		@media only screen and (orientation: portrait) 
 			order: 1
@@ -143,35 +159,25 @@ $teal: #00f5d4
 		z-index: 2
 		&::before
 			opacity: 0.5
-		&--altLeft
-			margin-left: 1rem
-		&--altRight
-			margin-right: 1rem
-		&--altBottom
-			margin-bottom: 1rem
-		&--altTop
-			margin-top: 1em
-		&--closed
-			p, a
-				display: none
-			&::before
-				opacity: 1
-		&--top
-			border-bottom-right-radius: 0
-			border-bottom-left-radius:0
-			margin-top: 0
-		&--left
+		&--pos1
+			@media only screen and (orientation: portrait)
+				margin-top: 0
+				border-bottom-right-radius: 0
+				border-bottom-left-radius: 0
 			border-top-left-radius: 0
 			border-bottom-left-radius: 0
 			margin-left: 0
-		&--right
+		&--pos2
+			@media only screen and (orientation: portrait)
+				margin-bottom: 0
+				border-top-right-radius: 0
+				border-top-left-radius: 0
 			border-top-right-radius: 0
 			border-bottom-right-radius: 0
 			margin-right: 0
-		&--bottom
-			border-bottom-left-radius: 0
-			border-bottom-right-radius: 0
-			margin-bottom: 0
+		&--opaque
+			&::before
+				opacity: 1
 
 
 
@@ -181,13 +187,12 @@ $teal: #00f5d4
 		height: 50vh
 		order: 1
 		width: 100%
-	@include psuedoBackground
+	@include pseudoBackground
 	background: black
 	display: flex
 	height: auto
 	position: relative
 	order: 2
-	transition: all .5s linear
 	width: 50%
 	img
 		height: 100%
@@ -197,6 +202,8 @@ $teal: #00f5d4
 		position: absolute
 		top: 0
 		width: 100%
+	&--hidden
+		opacity: 0.05
 	&--altOrder
 		order: 1
 		@media only screen and (orientation: portrait) 
@@ -275,4 +282,157 @@ $teal: #00f5d4
 				margin-bottom: 1rem
 
 
+.inner
+	@media only screen and (min-width: 920px)
+		padding: 6rem 6rem .5rem 6rem
+	padding: 2rem 2rem .5rem 2rem
+	margin-bottom: 1rem
+	&__blurb
+		margin-top: 1rem
+	&__header
+		h2
+			@media only screen and (max-width: 920px)
+				font-size: 1.25rem
+			font-size: 2rem
+			margin-top: 0
 
+.gallery
+	@include pseudoBackground
+	margin-top: 1rem
+	padding-bottom: .5rem
+	text-align: center
+	height: auto
+	&__track
+		display: flex
+		overflow-x: hidden
+		scroll-behavior: smooth
+		position: relative
+		height: auto
+		width: 100%
+
+	&__slide
+		flex-grow: 0
+		flex-shrink: 0
+		max-width: 75vw
+		margin: auto
+		position: relative
+		height: 240px
+		width: 22.5rem
+		img
+			max-width: 100%
+			object-fit: cover
+		figcaption
+			@include pseudoBackground
+			color: inherit
+			display: flex
+			flex-direction: column
+			justify-content: center
+			align-items: center
+			position: absolute
+			height: 100%
+			padding: 1rem 2rem
+			opacity: 0
+			left: 0
+			top: 0
+			width: 100%
+			*
+				margin-bottom: .5rem
+			a
+				margin: .5rem auto .5rem auto
+				padding: .5rem 2rem
+			&:hover
+				opacity: 0.75
+	&__container
+		position: relative
+		height: auto
+		&:hover
+			button
+				opacity: 1
+	&__arrow
+		@media only screen and (min-width: 920px)
+			opacity: 0
+		border: none
+		color: white
+		cursor: pointer
+		padding: 0 2rem
+		position: absolute
+		height: 100%
+		top: 0
+		z-index: 2
+		&:focus
+			outline: none 
+		i
+			font-size: 2rem
+		&--left
+			background: linear-gradient(to right, rgba(0, 0 , 0 , 0.75), rgba(255, 255 , 255 , 0))
+			left: 0
+		&--right
+			background: linear-gradient(to left, rgba(0, 0 , 0 , 0.75), rgba(255, 255 , 255 , 0))
+			right: 0		
+	&--purple
+		color: white
+		&::before
+			background: $purple
+		figcaption
+			&::before
+				background: $purple
+	&--pink
+		&::before
+			background: $pink
+		figcaption
+			&::before
+				background: $pink
+	&--yellow
+		&::before
+			background: $yellow
+		figcaption
+			&::before
+				background: $yellow
+	&--blue
+		border-color: white
+		color: white
+		&::before
+			background: $blue
+		figcaption
+			color: white
+			&::before
+				background: $blue
+		button
+			border-color: white
+	&--teal
+		&::before
+			background: $teal
+		figcaption
+			&::before
+				background: $teal
+	&--black
+		border-color: white
+		color: white
+		&::before
+			background: black
+		figcaption
+			color: white
+			&::before
+				background: black
+		button
+			border-color: white
+	&--alt
+		div
+			flex-wrap: wrap
+			justify-content: center
+			button
+				display: none
+			figure
+				margin: 1rem 
+		&--center
+			div
+				justify-content: center
+				figure
+					flex-grow: 0
+					flex-shrink: 1
+					margin: 0
+
+.contact
+	display: flex
+	flex-direction: column
+	text-align: center

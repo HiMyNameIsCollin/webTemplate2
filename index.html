@@ -4,8 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href='css/style.css'>
-	<script src='script.js' defer></script>
 	<title>Template2</title>
+	<script src='script.js' defer></script>	
+	<script src="https://kit.fontawesome.com/1f3e95df30.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<section class='banner' id='banner'>
@@ -25,8 +26,8 @@
 			</p>
 			<a id='bannerButton' class='content__button'> Let's go</a>
 		</div>
-		<div id='bannerImage' class='image '>
-			<img src="https://source.unsplash.com/random">
+		<div id='bannerImage' class='image image--hidden'>
+			<img src="assets/lemon.jpg">
 		</div>
 
 	</section>
@@ -49,8 +50,8 @@
 				</p>
 				<a id='bannerButton' class='content__button'> Let's go</a>
 			</div>
-			<div class='image image--altSize image--altOrder'>
-				<img src="https://source.unsplash.com/random">
+			<div class='image image--altSize image--altOrder image--hidden'>
+				<img src="https://source.unsplash.com/random/3">
 			</div>
 		</article>
 		<article class='spotlight' id='spotlight2'>
@@ -70,11 +71,164 @@
 				</p>
 				<a id='bannerButton' class='content__button'> Let's go</a>
 			</div>
-			<div class='image image--altSize'>
-				<img src="https://source.unsplash.com/random">
+			<div class='image image--altSize image--hidden'>
+				<img src="https://source.unsplash.com/random/2">
 			</div>
 		</article>
 
 	</section>
+
+	<section id='gallery' class='gallery'>
+		<aside class='inner'>
+			<header class='inner__header'>
+				<h2>
+					Gallery
+				</h2>
+			</header>
+			<p class='inner__blurb'>
+				<span class='switch'> Style </span>
+				<span class='switch'> Color </span>
+				Lorem ipsum dolor sit, amet consectetur, adipisicing elit. Maxime ducimus assumenda pariatur, veniam, recusandae dolorum esse, eligendi quasi vitae perferendis laborum odio atque ex sunt.
+			</p>
+		</aside>
+
+		<div class='gallery__container'>
+			<button id='galleryBack' class='gallery__arrow gallery__arrow--left'> <i class="fas fa-arrow-left"></i></button>
+			<div class='gallery__track'>
+					<figure class='gallery__slide'>
+						<img src="assets/sign.jpg" height='240px' width='360px'>
+						<figcaption>
+							<h3> Title </h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, perferendis?</p>
+							<a class='content__button'> Go on </a>
+						</figcaption>
+					</figure>
+					<figure class='gallery__slide'>
+						<img src="assets/sign2.jpg" height='240px' width='360px'>
+						<figcaption>
+							<h3> Title </h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, perferendis?</p>
+							<a class='content__button'> Go on </a>
+						</figcaption>
+					</figure>
+					<figure class='gallery__slide' >
+						<img src="assets/sign3.jpg" height='240px' width='360px'>
+						<figcaption>
+							<h3> Title </h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, perferendis?</p>
+							<a class='content__button'> Go on </a>
+						</figcaption>
+					</figure>
+					<figure class='gallery__slide'>
+						<img src="assets/bookClutter.jpg" height='240px' width='360px'>
+						<figcaption>
+							<h3> Title </h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, perferendis?</p>
+							<a class='content__button'> Go on </a>
+						</figcaption>
+					</figure>
+					<figure class='gallery__slide'>
+					
+						<img src="assets/confetti.jpg" height='240px' width='360px'>
+						<figcaption>
+							<h3> Title </h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, perferendis?</p>
+							<a class='content__button'> Go on </a>
+						</figcaption>
+					</figure>
+					<figure class='gallery__slide'>
+						<img src="assets/clutter.jpg" height='240px' width='360px'>
+						<figcaption>
+							<h3> Title </h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, perferendis?</p>
+							<a class='content__button'> Go on </a>
+						</figcaption>
+					</figure>
+					<figure class='gallery__slide'>
+						<img src="assets/toolClutter.jpg" height='240px' width='360px'>
+						<figcaption>
+							<h3> Title </h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, perferendis?</p>
+							<a class='content__button'> Go on </a>
+						</figcaption>
+					</figure>
+					<figure class='gallery__slide'>
+						<img src="assets/sign.jpg" height='240px' width='360px'>
+						<figcaption>
+							<h3> Title </h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, perferendis?</p>
+							<a class='content__button'> Go on </a>
+						</figcaption>
+					</figure>
+					<figure class='gallery__slide'>
+						<img src="assets/sign2.jpg" height='240px' width='360px'>
+						<figcaption>
+							<h3> Title </h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, perferendis?</p>
+							<a class='content__button'> Go on </a>
+						</figcaption>
+					</figure>
+					<figure class='gallery__slide' >
+						<img src="assets/sign3.jpg" height='240px' width='360px'>
+						<figcaption>
+							<h3> Title </h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, perferendis?</p>
+							<a class='content__button'> Go on </a>
+						</figcaption>
+					</figure>
+					<figure class='gallery__slide'>
+						<img src="assets/bookClutter.jpg" height='240px' width='360px'>
+						<figcaption>
+							<h3> Title </h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, perferendis?</p>
+							<a class='content__button'> Go on </a>
+						</figcaption>
+					</figure>
+					<figure class='gallery__slide'>
+					
+						<img src="assets/confetti.jpg" height='240px' width='360px'>
+						<figcaption>
+							<h3> Title </h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, perferendis?</p>
+							<a class='content__button'> Go on </a>
+						</figcaption>
+					</figure>
+			</div>		
+			<button id='galleryForward' class='gallery__arrow gallery__arrow--right'> <i class="fas fa-arrow-right"></i> </button>	
+
+		</div>
+	</section>
+
+	<section id='contact' class='contact'>
+		<aside class='inner'>
+			<header class='inner__header'>
+				<h2>
+					Contact
+				</h2>
+			</header>
+			<p class='inner__blurb'>
+				<span class='switch'> Style </span>
+				<span class='switch'> Color </span>
+				Lorem ipsum dolor sit, amet consectetur, adipisicing elit. Maxime ducimus assumenda pariatur, veniam, recusandae dolorum esse, eligendi quasi vitae perferendis laborum odio atque ex sunt.
+			</p>
+	    </aside>
+		<form class='form'>
+			<div class='form__group'>
+				<label class='form__label' for="name">Name</label>
+				<input class='form__input' type="text" name="name"/>
+			</div>
+			<div class='form__group'>
+				<label class='form__label' for="email">Email</label>
+				<input class='form__input' type="text" name="email"/>
+			</div>
+			<div class='form__group'>
+				<label class='form__label' for="message">Message</label>
+				<textarea class='form__input' rows='6' name="message"></textarea>
+			</div>
+			<a class='form__btn'>Submit</a>
+		</form>
+	</section>
+
+
 </body>
 </html>

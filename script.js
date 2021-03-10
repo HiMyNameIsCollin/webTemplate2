@@ -1,3 +1,4 @@
+
 const panelStyles = [
 	[
 		[],
@@ -8,7 +9,7 @@ const panelStyles = [
 		['image--back']
 	],
 	[
-		['content--front', 'content--front--closed'],
+		['content--front', 'content--front--opaque'],
 		['image--back']
 	],
 	[
@@ -16,6 +17,45 @@ const panelStyles = [
 		['image--back', 'image--back--cover']
 	],
 ]
+
+const galleryStyles =[
+	[
+		['gallery--alt'],
+		[]
+	],
+	[
+		['gallery--alt', 'gallery--alt--center'],
+		[]
+	],
+]
+
+const galleryColorStyles = [
+	[
+		['gallery--black'],
+		[]
+	],
+	[
+		['gallery--purple'],
+		[]
+	],
+	[
+		['gallery--pink'],
+		[]
+	],
+	[
+		['gallery--yellow'],
+		[]
+	],
+	[
+		['gallery--blue'],
+		[]
+	],
+	[
+		['gallery--teal'],
+		[]
+	],
+]
+
 const orientationStyles = [
 	[
 		['content--altOrder'],
@@ -24,35 +64,11 @@ const orientationStyles = [
 ]
 const contentPositionStyles = [
 	[
-		['content--front--altLeft'],
+		['content--front--pos1'],
 		[]
 	],
 	[
-		['content--front--left'],
-		[]
-	],
-	[
-		['content--front--altTop'],
-		[]
-	],
-	[
-		['content--front--top'],
-		[]
-	],
-	[
-		['content--front--altRight'],
-		[]
-	],
-	[
-		['content--front--right'],
-		[]
-	],
-	[
-		['content--front--altBottom'],
-		[]
-	],
-	[
-		['content--front--bottom'],
+		['content--front--pos2'],
 		[]
 	],
 ]
@@ -67,7 +83,7 @@ const alignmentStyles = [
 		[]
 	],
 ]
-const colorStyles = [
+const bannerColorStyles = [
 	[
 		 ['content--black'],
 		 ['image--black']
@@ -129,7 +145,7 @@ function Panel(element) {
 	this.image.addEventListener('click', () => {handleStyle(panelStyles, this.styleCounter, this.content, this.image), this.styleCounter < panelStyles.length ? this.styleCounter++ : this.styleCounter = 0, this.watchStyles() })
 	this.styleSwitch.addEventListener('click', () => {handleStyle(panelStyles, this.styleCounter, this.content, this.image), this.styleCounter < panelStyles.length ? this.styleCounter++ : this.styleCounter = 0, this.watchStyles()})
 	this.alignmentSwitch.addEventListener('click', () => {handleStyle(alignmentStyles, this.alignmentCounter, this.content), this.alignmentCounter < alignmentStyles.length ? this.alignmentCounter++ : this.alignmentCounter = 0, this.watchStyles()})
-	this.colorSwitch.addEventListener('click', () => {handleStyle(colorStyles, this.colorCounter, this.content, this.image), this.colorCounter < colorStyles.length ? this.colorCounter++ : this.colorCounter = 0, this.watchStyles()})
+	this.colorSwitch.addEventListener('click', () => {handleStyle(bannerColorStyles, this.colorCounter, this.content, this.image), this.colorCounter < bannerColorStyles.length ? this.colorCounter++ : this.colorCounter = 0, this.watchStyles()})
 	this.orientationSwitch.addEventListener('click', () => {handleStyle(orientationStyles, this.orientationCounter, this.content, this.image), this.orientationCounter < orientationStyles.length ? this.orientationCounter++ : this.orientationCounter = 0, this.watchStyles()})
 	this.imagePositionSwitch.addEventListener('click', () => {handleStyle(imagePositionStyles, this.imagePositionCounter, this.image), this.imagePositionCounter < imagePositionStyles.length ? this.imagePositionCounter++ : this.imagePositionCounter = 0, this.watchStyles()})
 	this.contentPositionSwitch.addEventListener('click', () => {handleStyle(contentPositionStyles, this.contentPositionCounter, this.content), this.contentPositionCounter < contentPositionStyles.length ? this.contentPositionCounter++ : this.contentPositionCounter = 0, this.watchStyles()})
@@ -145,17 +161,18 @@ function Panel(element) {
 			this.contentPositionSwitch.classList.add('switch--hidden')
 		}
 	}
+	this.observer = new IntersectionObserver((entries) => {
+		if(entries[0].isIntersecting === true){
+			this.image.classList.remove('image--hidden')
+		}
+	}, {threshold: [0.5]})
+	this.observer.observe(this.image)
 }
 
 const banner = new Panel(document.getElementById('banner'))
 const spotlight1 = new Panel(document.getElementById('spotlight1'))
 const spotlight2 = new Panel(document.getElementById('spotlight2'))
-document.getElementById('banner').children[0].children[0].addEventListener('click', (e) => {
-	e.stopPropagation()
-	console.log(document.getElementById('banner').children[0].children[1])
-	document.getElementById('banner').children[0].children[1].style.display = 'block'
-	document.getElementById('banner').children[0].children[2].style.display = 'block'
-})
+
 const handleStyle = (styles, counter, element1, element2) => {
 	const removeClass = (style1, style2, element1, element2) => {
 		if(style1){
@@ -206,3 +223,65 @@ const handleStyle = (styles, counter, element1, element2) => {
 			)
 	}
 }
+
+
+/*#####GALLERY TINGS########*/
+
+function Gallery(element){
+	this.track = element.children[1].children[1]
+	this.backBtn = element.children[1].children[0]
+	this.forwardBtn = element.children[1].children[2]
+	this.styleBtn = element.children[0].children[1].children[0]
+	this.colorBtn = element.children[0].children[1].children[1]
+	this.styleCounter = 0
+	this.colorCounter = 0
+	this.backBtn.addEventListener('mouseover', handleTrackBack)
+	this.forwardBtn.addEventListener('mouseover', handleTrackNext)
+	this.styleBtn.addEventListener('click', () => handleStyle(galleryStyles, this.styleCounter, element), this.styleCounter < galleryStyles.length ? this.styleCounter++ : this.styleCounter = 0)
+	this.colorBtn.addEventListener('click', () => handleStyle(galleryColorStyles, this.colorCounter, element), this.colorCounter < galleryColorStyles.length ? this.colorCounter++ : this.colorCounter = 0)
+}
+
+const handleTrackNext = (e) => {
+	const track = document.querySelector('.gallery__track')
+	const scrollMax = track.scrollWidth - track.getBoundingClientRect().right
+	let mouseOn = true
+	const watchMouse = () => {
+		mouseOn = false
+		e.target.removeEventListener('mouseout', watchMouse)
+	}
+	if(track.scrollLeft < track.scrollWidth - track.getBoundingClientRect().right){
+		const move = () => {
+			if (mouseOn){
+				track.scrollLeft += (track.scrollWidth - track.getBoundingClientRect().right) / 12
+				setTimeout(() => {
+					move()
+				},500)
+			}
+		}
+		e.target.addEventListener('mouseout', watchMouse)
+		move()		
+	}
+}
+const handleTrackBack = (e) => {
+	const track = document.querySelector('.gallery__track')
+	const scrollMax = track.scrollWidth - track.getBoundingClientRect().right
+	let mouseOn = true
+	const watchMouse = () => {
+		mouseOn = false
+		e.target.removeEventListener('mouseout', watchMouse)
+	}
+	if(track.scrollLeft > 0 ){
+		const move = () => {
+			if(mouseOn){
+				track.scrollLeft -= (track.scrollWidth - track.getBoundingClientRect().right) / 12
+				setTimeout(() => {
+					move()
+				},500)				
+			}
+		}
+		e.target.addEventListener('mouseout', watchMouse)
+		move()		
+	}
+}
+
+const gallery = new Gallery(document.getElementById('gallery')) 
