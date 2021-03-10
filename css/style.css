@@ -577,11 +577,147 @@
   flex-shrink: 1;
   margin: 0;
 }
+@media only screen and (orientation: portrait) {
+  .gallery--alt--center div figure {
+    max-width: 100%;
+  }
+}
 
 .contact {
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
   text-align: center;
+}
+@media only screen and (min-width: 1360px) {
+  .contact {
+    padding: 0 12rem;
+  }
+}
+.contact::before {
+  background: white;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+.contact--purple {
+  color: white;
+}
+.contact--purple::before {
+  background: #9b5de5;
+}
+.contact--purple__button {
+  border-color: white;
+}
+.contact--pink::before {
+  background: #f15bb5;
+}
+.contact--yellow::before {
+  background: #fee440;
+}
+.contact--blue {
+  border-color: white;
+  color: white;
+}
+.contact--blue::before {
+  background: #00bbf9;
+}
+.contact--blue__button {
+  border-color: white;
+}
+.contact--teal::before {
+  background: #00f5d4;
+}
+.contact--black {
+  border-color: white;
+  color: white;
+}
+.contact--black::before {
+  background: black;
+}
+.contact--altOrder {
+  display: flex;
+}
+.contact--altOrder aside {
+  width: 50%;
+}
+.contact--altOrder form {
+  padding-top: 6rem;
+  margin: center;
+  width: 50%;
+}
+.contact--altOrder form div {
+  margin-top: 0;
+  width: 100%;
+}
+@media only screen and (orientation: portrait) {
+  .contact--altOrder {
+    flex-direction: column;
+  }
+  .contact--altOrder aside {
+    order: 2;
+    width: 100%;
+  }
+  .contact--altOrder form {
+    order: 1;
+    width: 100%;
+  }
+}
+
+.mediaIcons {
+  display: flex;
+  font-size: 2rem;
+  justify-content: space-between;
+  margin: 1rem auto 0 auto;
+}
+.mediaIcons a {
+  color: inherit;
+}
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2rem 2rem 0.5rem 2rem;
+}
+@media only screen and (min-width: 920px) {
+  .form {
+    padding: 0.5rem 6rem 0.5rem 6rem;
+  }
+}
+.form__group {
+  width: 100%;
+  margin-top: 1rem;
+}
+@media only screen and (min-width: 576px) {
+  .form__group {
+    width: 45%;
+  }
+  .form__group:nth-of-type(3) {
+    width: 100%;
+  }
+}
+.form__label {
+  display: block;
+  padding: 1rem 0;
+  font-weight: 700;
+  text-align: start;
+}
+.form__input {
+  border: solid 2px black;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+.form__input:focus {
+  border: solid 2px black;
+  outline: none;
+}
+.form__button {
+  margin: 1rem auto;
 }
 
 /*# sourceMappingURL=style.css.map */

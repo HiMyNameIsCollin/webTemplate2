@@ -428,11 +428,99 @@ $teal: #00f5d4
 			div
 				justify-content: center
 				figure
+					@media only screen and (orientation: portrait)
+						max-width: 100%
 					flex-grow: 0
 					flex-shrink: 1
 					margin: 0
 
 .contact
-	display: flex
-	flex-direction: column
+	@media only screen and (min-width: 1360px)
+		padding: 0 12rem 
+	@include pseudoBackground
 	text-align: center
+	&--purple
+		color: white
+		&::before
+			background: $purple
+		&__button
+			border-color: white
+	&--pink
+		&::before
+			background: $pink
+	&--yellow
+		&::before
+			background: $yellow
+	&--blue
+		border-color: white
+		color: white
+		&::before
+			background: $blue
+		&__button
+			border-color: white
+	&--teal
+		&::before
+			background: $teal
+	&--black
+		border-color: white
+		color: white
+		&::before
+			background: black
+	&--altOrder
+		display: flex
+		aside
+			width: 50%
+		form
+			padding-top: 6rem
+			margin: center
+			width: 50%
+			div
+				margin-top: 0
+				width: 100%
+		@media only screen and (orientation: portrait)
+			flex-direction: column
+			aside
+				order: 2
+				width: 100%
+			form
+				order: 1
+				width: 100%
+
+.mediaIcons
+	display: flex
+	font-size: 2rem
+	justify-content: space-between
+	margin: 1rem auto 0 auto
+	a
+		color: inherit
+	@media only screen and (min-width: 920)
+
+.form
+	@media only screen and (min-width: 920px)
+		padding: .5rem 6rem .5rem 6rem
+	display: flex
+	flex-wrap: wrap
+	justify-content: space-between
+	padding: 2rem 2rem .5rem 2rem
+	&__group
+		@media only screen and (min-width: 576px)
+			width: 45%
+			&:nth-of-type(3)
+				width: 100%
+		width: 100%
+		margin-top: 1rem
+	&__label
+		display: block
+		padding: 1rem 0
+		font-weight: 700
+		text-align: start
+	&__input
+		border: solid 2px black
+		border-radius: 5px
+		padding: .5rem 1rem
+		width: 100%
+		&:focus
+			border: solid 2px black
+			outline: none
+	&__button
+		margin: 1rem auto
